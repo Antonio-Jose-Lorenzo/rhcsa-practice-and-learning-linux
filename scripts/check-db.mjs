@@ -1,0 +1,3 @@
+import {getPool} from '../server/db.js';
+let pool;
+try{pool=getPool();const r=await pool.query("SELECT tablename,rowsecurity FROM pg_tables WHERE schemaname='linux_lab' ORDER BY tablename");const expected=['admin_events','auth_limits','deletion_intents','study_profiles','study_progress','study_sessions','vm_reports'];if(!expected.every(name=>r.rows.some(t=>t.tablename===name&&t.rowsecurity)))throw Error('Faltan tablas o RLS; aplica la migración del paquete.');console.log('Conexión correcta. Esquema Linux Lab y RLS comprobados.');}catch(error){console.error(error.code?'No se pudo comprobar la conexión. Revisa DATABASE_URL y el certificado.':error.message);process.exitCode=1;}finally{await pool?.end();}

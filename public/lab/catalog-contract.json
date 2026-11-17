@@ -1,0 +1,615 @@
+{
+  "schema": 2,
+  "examVersion": 4,
+  "examSeconds": 7200,
+  "labs": [
+    "files",
+    "ssh",
+    "rpm",
+    "flatpak",
+    "script",
+    "process",
+    "journal",
+    "boot",
+    "gpt",
+    "lvm",
+    "swap",
+    "fs",
+    "nfs",
+    "permissions",
+    "schedule",
+    "services",
+    "network",
+    "firewall",
+    "users",
+    "selinux",
+    "find",
+    "archives",
+    "basherrors",
+    "servicefailure",
+    "fstab",
+    "nfspermissions",
+    "timercalendar",
+    "dns",
+    "routes",
+    "sudo",
+    "selinuxbool",
+    "flatpakscope",
+    "flatpakrepair",
+    "rpmhistory",
+    "podmanimages",
+    "podmanweb",
+    "podmanvolume",
+    "podmanquadlet",
+    "podmannetwork",
+    "podmanincident",
+    "examshell",
+    "examregex",
+    "examssh",
+    "examarchives",
+    "examlinks",
+    "examdocs",
+    "examrpm",
+    "examflatpak",
+    "examscript",
+    "examboottarget",
+    "examrecovery",
+    "examprocess",
+    "examjournal",
+    "examservices",
+    "examgpt",
+    "exampv",
+    "examlv",
+    "exammount",
+    "examswap",
+    "examformats",
+    "examnfs",
+    "examautofs",
+    "examgrow",
+    "examperms",
+    "examscheduler",
+    "examtimeboot",
+    "examrepo",
+    "examnetwork",
+    "examusers",
+    "examfirewall",
+    "examsecontext",
+    "examsepolicy"
+  ],
+  "auto": {
+    "files": {
+      "criteria": [
+        0,
+        1
+      ],
+      "machine": "server"
+    },
+    "ssh": {
+      "criteria": [
+        1
+      ],
+      "machine": "client"
+    },
+    "rpm": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "journal": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "lvm": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "permissions": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "schedule": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "services": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "users": {
+      "criteria": [
+        0,
+        1
+      ],
+      "machine": "server"
+    },
+    "selinux": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examregex": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examssh": {
+      "criteria": [
+        1
+      ],
+      "machine": "client"
+    },
+    "examrpm": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examjournal": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examgrow": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examperms": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examscheduler": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    },
+    "examusers": {
+      "criteria": [
+        0,
+        1
+      ],
+      "machine": "server"
+    },
+    "examsecontext": {
+      "criteria": [
+        0
+      ],
+      "machine": "server"
+    }
+  },
+  "examAliases": {
+    "examregex": {
+      "lab": "files",
+      "map": {
+        "0": 0
+      }
+    },
+    "examssh": {
+      "lab": "ssh",
+      "map": {
+        "1": 1
+      }
+    },
+    "examrpm": {
+      "lab": "rpm",
+      "map": {
+        "0": 0
+      }
+    },
+    "examjournal": {
+      "lab": "journal",
+      "map": {
+        "0": 0
+      }
+    },
+    "examgrow": {
+      "lab": "lvm",
+      "map": {
+        "0": 0
+      }
+    },
+    "examperms": {
+      "lab": "permissions",
+      "map": {
+        "0": 0
+      }
+    },
+    "examscheduler": {
+      "lab": "schedule",
+      "map": {
+        "0": 0
+      }
+    },
+    "examusers": {
+      "lab": "users",
+      "map": {
+        "0": 0,
+        "1": 1
+      }
+    },
+    "examsecontext": {
+      "lab": "selinux",
+      "map": {
+        "0": 0
+      }
+    }
+  },
+  "vmRoles": {
+    "examshell": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examregex": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examssh": [
+      [
+        "client"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examarchives": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examlinks": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examdocs": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examrpm": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examflatpak": [
+      [
+        "client"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examscript": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examboottarget": [
+      [
+        "client"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examrecovery": [
+      [
+        "client"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examprocess": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examjournal": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examservices": [
+      [
+        "server"
+      ],
+      [
+        "server",
+        "client"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examgpt": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "exampv": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examlv": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "exammount": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examswap": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examformats": [
+      [
+        "client"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examnfs": [
+      [
+        "server"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examautofs": [
+      [
+        "client"
+      ],
+      [
+        "client"
+      ],
+      [
+        "client"
+      ]
+    ],
+    "examgrow": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examperms": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examscheduler": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examtimeboot": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examrepo": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examnetwork": [
+      [
+        "server",
+        "client"
+      ],
+      [
+        "server",
+        "client"
+      ],
+      [
+        "server",
+        "client"
+      ]
+    ],
+    "examusers": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examfirewall": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examsecontext": [
+      [
+        "server"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server"
+      ]
+    ],
+    "examsepolicy": [
+      [
+        "server",
+        "client"
+      ],
+      [
+        "server"
+      ],
+      [
+        "server",
+        "client"
+      ]
+    ]
+  }
+}

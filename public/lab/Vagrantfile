@@ -1,0 +1,56 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Laboratorio EX200: Rocky Linux 10, VirtualBox, hosts x86_64.
+# Cambia solamente este bloque para ajustar el entorno.
+LAB = {
+  box: "rocky-ex200-10.3-20261112",
+  # Imagen oficial fijada para evitar cambios de base entre estudiantes.
+  box_url: "https://dl.rockylinux.org/pub/rocky/10/images/x86_64/Rocky-10-Vagrant-Vbox-10.3-20261112.0.x86_64.vagrant.virtualbox.box",
+  sha256: "fada788c989a56d2e82668b1b09b4bbb9460f578b15f1e92b5b3052c5284a7ff",
+  cpus: 1,
+  memory_mb: 1024,       # 1 GiB; usa 2048 para Flatpak/Podman si falta memoria.
+  system_disk: "25GB",  # Capacidad virtual; no reduce discos existentes.
+  timezone: "UTC",      # Misma referencia temporal para logs de ambos nodos.
+  extra_disks: false,   # Activa antes de crear VMs para GPT, LVM, swap y FS.
+  data_disk: "8GB"
+}.freeze
+
+Vagrant.configure("2") do |config|
+  config.vm.box = LAB[:box]
+  config.vm.box_url = LAB[:box_url]
+  config.vm.box_download_checksum_type = "sha256"
+  config.vm.box_download_checksum = LAB[:sha256]
+  config.vm.box_check_update = false
+  config.ssh.insert_key = true
+  # Sin carpetas compartidas: funciona sin Guest Additions y evita CRLF/permisos.
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  {"server" => "192.168.56.10", "client" => "192.168.56.20"}.each do |name, ip|
+    config.vm.define name do |node|
+      node.vm.hostname = "#{name}.lab"
+      # El adaptador 1 conserva NAT y DHCP. Este es el adaptador 2, host-only.
+      # IP fija: SSH, NFS y pruebas mantienen destinos estables al reiniciar.
+      node.vm.network "private_network", ip: ip
+      node.vm.disk :disk, size: LAB[:system_disk], primary: true
+
+      if LAB[:extra_disks]
+        node.vm.disk :disk, size: LAB[:data_disk], name: "#{name}-practica-1"
+        if name == "server"
+          node.vm.disk :disk, size: LAB[:data_disk], name: "#{name}-practica-2"
+        end
+      end
+
+      node.vm.provider "virtualbox" do |vb|
+        vb.memory = LAB[:memory_mb]
+        vb.cpus = LAB[:cpus]
+        vb.gui = false
+        vb.check_guest_additions = false
+        vb.functional_vboxsf = false
+      end
+
+      # Copia por SSH: no necesita acceso al filesystem del host desde la VM.
+      node.vm.provision "file", source: "verify.py", destination: "/tmp/ex200-verify.py"
+      node.vm.provision "shell", path: "provision.sh", args: [name, LAB[:timezone]]
+    end
+  end
+end
